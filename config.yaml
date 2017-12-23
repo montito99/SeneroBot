@@ -1,0 +1,7 @@
+---
+
+bot_creds:
+  username: "username"
+  password: "password"
+
+tags_to_search: ["bitcoin", "cryptocurrency", "litecoin"]
