@@ -4,6 +4,7 @@
 import hashlib
 import hmac
 import json
+import logging
 import sys
 import urllib
 import uuid
@@ -73,7 +74,7 @@ class InstagramAPI(object):
                     self.token = resp.cookies["csrftoken"]
 
                     self.sync_features()
-                    print("Login success!\n")
+                    logging.info("Login success!\n")
                     return True
             else:
                 raise Exception("Could not login!")
@@ -200,8 +201,6 @@ class InstagramAPI(object):
             response = self.s.post(self.API_URL + endpoint, data=post)  # , verify=False
         else:  # GET
             response = self.s.get(self.API_URL + endpoint)  # , verify=False
-        if response.status_code != 200:
-            print(response.status_code),
         return response
 
     def is_user_commented(self, media_id):
